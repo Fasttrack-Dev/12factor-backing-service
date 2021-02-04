@@ -81,6 +81,7 @@ Resources:
     Type: AWS::ApiGatewayV2::Deployment
     Properties:
       ApiId: !Ref DummyHttpApi
+    DependsOn: DummyRoute
 
   LambdaPermission:
     Type: AWS::Lambda::Permission
@@ -97,3 +98,17 @@ Resources:
           - ":"
           - !Ref DummyHttpApi
           - "/*/*/*"
+
+Outputs:
+  DummyEndpoint:
+    Value: !Join
+      - ""
+      - - "https://"
+        - !Ref DummyHttpApi
+        - ".execute-api."
+        - !Ref AWS::Region
+        - ".amazonaws.com/"
+        - !Ref DummyStage
+        - "/"
+    Export:
+      Name: DummyEndpoint
