@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 bucket_name="twelve-factor-app-service-staging"
-package_name="twelve-factor-backing-service.zip"
+package_name="twelve-factor-backing-service-$(uuidgen).zip"
 
 # build the application binary
 echo "Building binary"
@@ -9,7 +9,6 @@ echo "Building binary"
 
 # package it
 echo "Packaging binary and extensions"
-rm -rf "$package_name"
 zip -j "$package_name" build/libs/*.jar
 
 # stage it
@@ -22,4 +21,9 @@ aws s3 cp "$package_name" "s3://$bucket_name"
 
 # spin up / refresh environment
 cd cloudformation
-./build
+./build "$package_name"
+cd ..
+
+echo "Remove staging"
+aws s3 rm s3://"$bucket_name"/"$package_name"
+rm "$package_name"

@@ -60,7 +60,7 @@ Resources:
       SolutionStackName: "64bit Amazon Linux 2 v3.1.4 running Corretto 8"
       VersionLabel: !Ref ApplicationVersion
 
-# dummy service
+  # dummy service
 
   LambdaExecutionRole:
     Type: AWS::IAM::Role
