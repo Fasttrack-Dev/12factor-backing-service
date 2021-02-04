@@ -8,7 +8,8 @@ echo "Building binary"
 ./gradlew build
 
 # package it
-echo "Packaging binary and extensions"
+echo "Packaging binary"
+rm -rf "$package_name"
 zip -j "$package_name" build/libs/*.jar
 
 # stage it
