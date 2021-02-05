@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-bucket_name="twelve-factor-app-service-staging"
+account=$(aws sts get-caller-identity --query "Account" --output text)
+bucket_name="twelve-factor-app-service-staging-$account"
 package_name="twelve-factor-backing-service-$(uuidgen).zip"
 stack_name="twelve-factor-backing-service-stack"
 aws_region=$(aws configure get region)
