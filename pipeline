@@ -25,7 +25,7 @@ function prepareBucket {
 }
 
 # main
-echo "The stack will deployed in region $aws_region"
+echo "The stack will be deployed in region $aws_region"
 
 # build the application binary
 echo "Building binary"
