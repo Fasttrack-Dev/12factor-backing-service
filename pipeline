@@ -47,7 +47,8 @@ aws cloudformation deploy \
   --stack-name $stack_name \
   --template-file cloudformation/backing-service-app.yml \
   --parameter-overrides \
-      PackageName="$package_name"
+      PackageName="$package_name" \
+      BucketName="$bucket_name"
 
 echo "Remove staging"
 aws s3 rm s3://"$bucket_name"/"$package_name"
