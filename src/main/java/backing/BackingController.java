@@ -32,7 +32,7 @@ public class BackingController {
                 = useFallback ? endpoint_fallback : endpoint;
         useFallback = !useFallback;
         if (resourceUrl == null) {
-            return "Backing service is not cofigured correctly.";
+            return "Backing service is not configured correctly.";
         }
         logger.info("Effective backing service endpoint is {}", resourceUrl);
         ResponseEntity<String> response
