@@ -14,7 +14,8 @@ http://12factor-backing-service.<environment>.<region>.elasticbeanstalk.com/curr
 With every call, the application will call the other backing service to produce the result.
 
 ## Backing Service
-The intresting part of the Backing service are in the following areas 
+The intresting part of the backing services are in the following areas:
+
 `cloudformation/backing-service-app.yml`
 ```yml
 ...
@@ -34,7 +35,7 @@ The intresting part of the Backing service are in the following areas
           Value: "https://api.frankfurter.app/latest"
 ...
 ```
-and in the Java class file `src/main/java/backing/BackingController.java`
+and in the java class file `src/main/java/backing/BackingController.java`
 ```java
     @Value("#{environment.BACKING_SERVICE_ENDPOINT}")
     private String endpoint;
